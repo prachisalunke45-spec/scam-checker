@@ -44,25 +44,8 @@ st.write("Paste an internship or job message below to check if it is a scam.")
 
 message = st.text_area("Message", height=200)
 
-if st.button("Check karo"):
+if st.button("Check Message"):
     if message.strip() == "":
         st.warning("Please paste a message first.")
     else:
-        score, flags, good = check(message)
-        if score >= 5:
-            st.error(f"🔴 SCAM (Score: {score}/10)")
-            st.write("**Kya karein:** Paise mat do, reply mat do, block karo.")
-        elif score >= 2:
-            st.warning(f"🟡 CAREFUL (Score: {score}/10)")
-            st.write("**Kya karein:** Company ki website aur LinkedIn page khud check karo.")
-        else:
-            st.success(f"🟢 Looks SAFE (Score: {score}/10)")
-            st.write("**Dhyan rakho:** Phir bhi fee ya OTP kabhi mat do.")
-        if flags:
-            st.subheader("Red flags")
-            for f in flags:
-                st.write("- " + f)
-        if good:
-            st.subheader("Good signs")
-            for g in good:
-                st.write("- " + g)
+        score, flags,

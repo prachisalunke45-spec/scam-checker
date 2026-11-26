@@ -42,8 +42,8 @@ def ai_explain(text, score, flags, language):
         )
         resp = client.models.generate_content(model=MODEL, contents=prompt)
         return resp.text
-    except Exception:
-        return None
+    except Exception as e:
+        return "Error: " + str(e)
 
 def check(text):
     t = text.lower()

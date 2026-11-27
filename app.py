@@ -85,6 +85,19 @@ def save_check(score, flags, language):
     conn.commit()
     conn.close()
 
+SCAM_SAMPLE = (
+    "Congratulations! You are selected for Python Internship. "
+    "Pay ₹999 registration fee to confirm your seat. "
+    "Stipend up to ₹15,000 performance-based."
+)
+SAFE_SAMPLE = (
+    "We are hiring a Python intern. Fixed stipend 10000 per month. "
+    "Interview on Google Meet. Apply on our official website."
+)
+
+def load_sample(text):
+    st.session_state["msg"] = text
+
 def check(text):
     t = text.lower()
     score, flags, good = 0, [], []
@@ -106,7 +119,12 @@ with tab_check:
 
     language = st.selectbox("Explain in", ["English", "Hindi", "Marathi"])
 
-    message = st.text_area("Message", height=200)
+    st.write("No message handy? Try a sample:")
+    c1, c2 = st.columns(2)
+    c1.button("Sample: scam", on_click=load_sample, args=(SCAM_SAMPLE,))
+    c2.button("Sample: safe", on_click=load_sample, args=(SAFE_SAMPLE,))
+
+    message = st.text_area("Message", height=200, key="msg")
 
     if st.button("Check Message"):
         if message.strip() == "":

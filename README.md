@@ -4,6 +4,9 @@ A free web app that helps students check whether an internship or job message is
 
 **Live app:** https://scam-checker-prachi.streamlit.app
 
+**Install on phone:** 
+https://prachisalunke45-spec.github.io/scam-checker-app/
+
 ## Why I built this
 Many students receive fake internship offers that ask for a "registration fee", promise "performance-based" stipends, or push them to pay quickly. I built this tool to spot these red flags in seconds.
 
